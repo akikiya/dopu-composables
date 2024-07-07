@@ -3,11 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "bin": {
-    "new": "./new.js"
+  "scripts": {
+    "create": "node ./create.js"
   },
   "devDependencies": {
-    "@dopu/composables-scripts": "link:",
     "@types/node": "^20.14.10"
   }
 }
