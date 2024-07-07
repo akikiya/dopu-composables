@@ -6,6 +6,22 @@ settings:
 
 importers:
 
+  packages/use-debounced:
+    dependencies:
+      vue:
+        specifier: ^3.4.31
+        version: 3.4.31(typescript@5.5.3)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.5
+        version: 5.0.5(vite@5.3.3(@types/node@20.14.10))(vue@3.4.31(typescript@5.5.3))
+      typescript:
+        specifier: ^5.4.5
+        version: 5.5.3
+      vite:
+        specifier: ^5.2.10
+        version: 5.3.3(@types/node@20.14.10)
+
   packages/use-mounted:
     dependencies:
       vue:
