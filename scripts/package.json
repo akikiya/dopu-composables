@@ -1,0 +1,13 @@
+{
+  "name": "@dopu/composables-scripts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "new": "./new.js"
+  },
+  "devDependencies": {
+    "@dopu/composables-scripts": "link:",
+    "@types/node": "^20.14.10"
+  }
+}
