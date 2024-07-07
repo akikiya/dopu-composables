@@ -1,4 +1,4 @@
-import { customRef, type Ref } from "vue"
+import { customRef, Ref } from "vue"
 
 /**
  * Provides a debounced function.
