@@ -1,0 +1,29 @@
+{
+  "name": "@dopu/use-media-query",
+  "description": "A Vue3 composable function for matching media queries.",
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/use-media-query.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    "types": "./dist/types/index.d.ts",
+    "import": "./dist/use-media-query.js",
+    "require": "./dist/use-media-query.cjs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc",
+    "publish": "pnpm build && pnpm publish --access public --registry https://registry.npmjs.org/ --no-git-checks"
+  },
+  "dependencies": {
+    "vue": "^3.4.31"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10"
+  }
+}
