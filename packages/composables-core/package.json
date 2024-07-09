@@ -16,7 +16,7 @@
   "scripts": {
     "dev:docs": "serve ./docs",
     "collect:modules": "pnpm -F=scripts run collect",
-    "build:docs": "typedoc ./lib/index.ts",
+    "build:docs": "pnpm run collect:modules && typedoc ./lib/index.ts",
     "build:lib": "pnpm run collect:modules && vite build && tsc",
     "build": "pnpm run build:lib && pnpm run build:docs",
     "publish": "pnpm build && pnpm publish --access public --registry https://registry.npmjs.org/ --no-git-checks"

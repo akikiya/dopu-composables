@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: "20"
       - run: pnpm install
-      - run: pnpm -F="@dopu/composables-core" run build
+      - run: pnpm -F="@dopu/composables-core" run build:docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
