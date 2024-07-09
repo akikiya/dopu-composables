@@ -14,18 +14,20 @@
     "require": "./dist/composables-core.cjs"
   },
   "scripts": {
-    "build": "vite build && tsc",
+    "dev:docs": "serve ./docs",
+    "collect:modules": "pnpm -F=scripts run collect",
+    "build:docs": "typedoc ./lib/index.ts",
+    "build:lib": "pnpm run collect:modules && vite build && tsc",
+    "build": "pnpm run build:lib && pnpm run build:docs",
     "publish": "pnpm build && pnpm publish --access public --registry https://registry.npmjs.org/ --no-git-checks"
   },
   "dependencies": {
-    "@dopu/use-debounced": "^0.2.0",
-    "@dopu/use-media-query": "^0.1.0",
-    "@dopu/use-mounted": "^0.1.0",
-    "@dopu/use-throttled": "^0.1.0",
     "vue": "^3.4.31"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
+    "serve": "^14.2.3",
+    "typedoc": "^0.26.3",
     "typescript": "^5.4.5",
     "vite": "^5.2.10"
   }
