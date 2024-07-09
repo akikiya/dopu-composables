@@ -1,7 +1,7 @@
 {
   "name": "@dopu/use-debounced",
-  "description": "Two Vue3 composable functions for debouncing.",
-  "version": "0.2.0",
+  "description": "Vue3 Composables for debouncing functions and refs.",
+  "version": "0.3.0",
   "type": "module",
   "files": [
     "dist"

@@ -5,7 +5,7 @@ interface DebouncedFn<T, A extends any[]> {
   /**
    * Flushes the debounced function regardless of whether it has been cancelled or not.
    */
-  flush: (this: T, ...args: A) => void
+  flush(this: T, ...args: A): void
   /**
    * Cancels the debounced function.
    */
@@ -55,26 +55,50 @@ function useDebouncedFn<T, A extends any[]>(
   }
   debounced.cancel = () => {
     cancelled = true
+    clearTimeout(timeout)
   }
   return debounced
+}
+
+interface DebouncedRef<T> extends Ref<T> {
+  /**
+   * Blocks all future updates to the ref.
+   */
+  block(): void
 }
 
 /**
  * Provides a debounced ref.
  * @param initalValue The initial value.
- * @param delay The zero or greater delay in milliseconds. The default is 200.
+ * @param delay The zero or greater delay in milliseconds. The default is `200`.
  * @returns The debounced ref.
+ *
+ * @example
+ * ```js
+ * const debouncedRef = useDebouncedRef(0, 1000)
+ * debouncedRef.value = 1
+ * debouncedRef.value = 2
+ * debouncedRef.value = 3 // updates after 1000ms
+ * debouncedRef.block() // nothing will be updated
+ * ```
  */
-function useDebouncedRef<T>(initalValue: T, delay: number = 200): Ref<T> {
-  return customRef((track, trigger) => {
-    let value = initalValue
-    let timeout: number
+function useDebouncedRef<T>(
+  initalValue: T,
+  delay: number = 200
+): DebouncedRef<T> {
+  let value = initalValue
+  let timeout: number
+  let blocked = false
+  const debouncedRef: any = customRef((track, trigger) => {
     return {
       get() {
         track()
         return value
       },
       set(newValue: T) {
+        if (blocked) {
+          return
+        }
         clearTimeout(timeout)
         timeout = setTimeout(() => {
           value = newValue
@@ -83,6 +107,11 @@ function useDebouncedRef<T>(initalValue: T, delay: number = 200): Ref<T> {
       },
     }
   })
+  debouncedRef.block = () => {
+    blocked = true
+    clearTimeout(timeout)
+  }
+  return debouncedRef
 }
 
 export { useDebouncedFn, useDebouncedRef }
