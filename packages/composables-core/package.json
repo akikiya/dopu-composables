@@ -1,0 +1,32 @@
+{
+  "name": "@dopu/composables-core",
+  "description": "A Collection of Vue3 Composables",
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/composables-core.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    "types": "./dist/types/index.d.ts",
+    "import": "./dist/composables-core.js",
+    "require": "./dist/composables-core.cjs"
+  },
+  "scripts": {
+    "build": "vite build && tsc",
+    "publish": "pnpm build && pnpm publish --access public --registry https://registry.npmjs.org/ --no-git-checks"
+  },
+  "dependencies": {
+    "@dopu/use-debounced": "^0.2.0",
+    "@dopu/use-media-query": "^0.1.0",
+    "@dopu/use-mounted": "^0.1.0",
+    "@dopu/use-throttled": "^0.1.0",
+    "vue": "^3.4.31"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10"
+  }
+}
