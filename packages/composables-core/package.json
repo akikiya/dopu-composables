@@ -1,15 +1,15 @@
 {
   "name": "@dopu/composables-core",
   "description": "A Collection of Vue3 Composables",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "files": [
     "dist"
   ],
   "main": "./dist/composables-core.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/types/composables-core/lib/index.d.ts",
   "exports": {
-    "types": "./dist/types/index.d.ts",
+    "types": "./dist/types/composables-core/lib/index.d.ts",
     "import": "./dist/composables-core.js",
     "require": "./dist/composables-core.cjs"
   },
